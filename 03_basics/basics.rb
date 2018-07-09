@@ -18,7 +18,7 @@ def reverse_upcase_noLTA(string)
 end
 
 def array_42(arr)
-  arr.any? { |element| element == 42 }
+  arr.any?{|element| element == 42}
 end
 
 def magic_array(arr)
