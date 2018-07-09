@@ -1,59 +1,29 @@
-# #write your code here
-# def translate(a)
-# voyelles = []
-# consonnes = []
-# compteurV = 0
-# motsRecomp = ""
-#
-#   a.scan(/\w+/).map do |c|
-#     c.scan(/./).map.with_index do |char, i |
-#
-#       if i == 0 && char =~ /[aeiou]/
-#         compteurV += 1
-#         voyelles[c] += char
-#       else
-#         consonnes[c] += char
-#       end
-#
-#       if i == 1 && char =~ /[aeiou]/ && compteurV < 1
-#         compteurV += 1
-#         voyelles[c] += char
-#       else
-#         consonnes[c] += char
-#       end
-#
-#       if i == 2 && char =~ /[aeiou]/ && compteurV < 1
-#         compteurV += 1
-#         voyelles[c] += char
-#       else
-#         consonnes[c] += char
-#       end
-#       if i != 0 && i != 1 && i != 2
-#         voyelles[c] += char
-#       end
-#   motsRecomp += voyelles[c] + consonnes[c] + " "
-#     end
-#
-#   end
-#   motsRecomp.chop.insert(-1 , "ay")
-# end
-# puts translate("dfdfsoudf sdifsdaf")
+def translate(string)
+array = string.split(" ")
+pigged_array = array.map! {|x| pigify(x)}
+result = pigged_array.join(" ")
+return result
+end
 
-#write your code here
-def translate(a)
-voyelles = []
-consonnes = []
-compteurV = 0
-motsRecomp = ""
+def pigify(word)
+  vowels = ["a", "e", "i", "o", "u"]
 
-  a.scan(/\w+/).map do |c|
-    c.scan(/./).map.with_index do |char, i |
-
-      if i == 0 && char =~ /[aeiou]/
-        c + "ay"
-      end
-    end
-
+  if vowels.include? word[0].downcase
+    word + "ay"
+  # les deux cas "qu"
+  elsif word[0..1] == "qu"
+    word[2..-1] + "quay"
+  elsif word[1..2] == "qu"
+    word[3..-1] + word[0..2] + "ay"
+  # mot qui commence par les 3 consonnes
+  elsif !(vowels.include? word[0]) && !(vowels.include? word[1]) && !(vowels.include? word[2])
+    word[3..-1] + word[0..2] + "ay"
+  # mot qui commence par 2 consonnes
+  elsif !(vowels.include? word[0]) && !(vowels.include? word[1]) # for 2
+    word[2..-1] + word[0..1] + "ay"
+  # mot qui commence par une consonne
+  else
+    word[1..-1] + word[0] + "ay"
   end
 end
-puts translate("afdfsoudf adifsdaf")
+
