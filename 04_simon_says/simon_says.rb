@@ -14,7 +14,6 @@ end
 
 def start_of_word(string, number)
   string.slice(0,number)
-  # CA MARCHE MAIS C'EST MOCHE string.split(//)[0..number - 1].join("")
 end
 
 def first_word(string)
