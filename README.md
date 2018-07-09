@@ -1,2 +1,2 @@
-Exercices THP :
-groupe : @Anouar, @Rado
+Exercices THP lundi semaine 2 :
+groupe : @Jean, @Mathieu Chevet
